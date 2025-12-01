@@ -16,7 +16,7 @@ import java.util.concurrent.Executors;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Puzzle {
+public class Puzzlev2 {
   
   public static long calculate(String s) {
     return 1;
@@ -36,13 +36,21 @@ public class Puzzle {
     for (String line : lines) {
       char d = line.charAt(0);
       int move = Integer.parseInt(line.substring(1));
+      int delta = dial == 0 ? -1 : 0;
+
+      answer += move / 100;
+      move = move % 100;
+
       if (d == 'R') {
+        if (dial != 0 && dial + move >= 100) {
+          answer ++;
+        }
         dial = (dial + move) % 100;
       } else {
+        if (dial != 0 && dial - move <= 0) {
+          answer ++;
+        }
         dial = (dial - move + 100) % 100;
-      }
-      if (dial == 0) {
-        answer++;
       }
       System.out.println(dial);
     }
