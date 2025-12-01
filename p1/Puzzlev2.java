@@ -36,7 +36,6 @@ public class Puzzlev2 {
     for (String line : lines) {
       char d = line.charAt(0);
       int move = Integer.parseInt(line.substring(1));
-      int delta = dial == 0 ? -1 : 0;
 
       answer += move / 100;
       move = move % 100;
