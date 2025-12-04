@@ -27,14 +27,12 @@ public class Puzzle {
     Clock clock = Clock.systemUTC();
     long startTime = clock.millis();
     
+    long answer = 0;
     for (String line : lines) {
       System.out.println(line);
+      answer += calculate(line);
     }
     
-    long answer = lines.stream()
-        .map(Puzzle::calculate)
-        .reduce(0L, Long::sum);
-        
     System.out.println("answer is " + answer);     
     
     System.out.println("time taken " + (clock.millis() - startTime) + "ms");
