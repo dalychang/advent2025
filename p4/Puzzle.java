@@ -25,7 +25,7 @@ public class Puzzle {
     if (y < 0 || y >= map.length) {
       return 0;
     }
-    return map[y][x] == '@' ? 1 : 0;
+    return map[x][y] == '@' ? 1 : 0;
   }
   
   public static int countAdjacent(char[][] map, int x, int y) {
@@ -50,9 +50,9 @@ public class Puzzle {
     //Helper.printCharMap(map);
 
     long answer = 0;
-    for (int y = 0; y < map.length; y++) {
-      for (int x = 0; x < map[0].length; x++) {
-        if (map[y][x] != '@') {
+    for (int x = 0; x < map[0].length; x++) {
+      for (int y = 0; y < map.length; y++) {
+        if (map[x][y] != '@') {
           continue;
         }
 

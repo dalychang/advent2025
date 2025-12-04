@@ -37,10 +37,10 @@ public class Helper {
   }
 
   public static char[][] readCharGrid(List<String> lines) {
-    char[][] grid = new char[lines.size()][lines.get(0).length()];
-    for (int y = 0; y < lines.size(); y++) {
-      for (int x = 0; x < lines.get(y).length(); x++) {
-        grid[y][x] = lines.get(y).charAt(x);
+    char[][] grid = new char[lines.get(0).length()][lines.size()];
+    for (int x = 0; x < lines.size(); x++) {
+      for (int y = 0; y < lines.get(x).length(); y++) {
+        grid[x][y] = lines.get(y).charAt(x);
       }
     }
     return grid;
@@ -48,19 +48,19 @@ public class Helper {
 
   public static int[][] readIntGrid(List<String> lines, String divider) {
     int width = lines.get(0).split(divider).length;
-    int[][] grid = new int[lines.size()][width];
+    int[][] grid = new int[width][lines.size()];
     for (int y = 0; y < lines.size(); y++) {
       String[] split = lines.get(y).split(divider);
       for (int x = 0; x < split.length; x++) {
-        grid[y][x] = Integer.parseInt(split[x]);
+        grid[x][y] = Integer.parseInt(split[x]);
       }
     }
     return grid;
   }
   
   public static void printBitmap(boolean[][] bitmap, char yesChar, char noChar) {
-    for (int i = 0; i < bitmap.length; i++) {
-      for (int j = 0; j < bitmap[0].length; j++) {
+    for (int i = 0; i < bitmap[0].length; i++) {
+      for (int j = 0; j < bitmap.length; j++) {
         if (bitmap[i][j]) {
           System.out.print(yesChar);
         } else {
@@ -73,8 +73,8 @@ public class Helper {
   }
   
   public static void printIntMap(int[][] bitmap) {
-    for (int i = 0; i < bitmap.length; i++) {
-      for (int j = 0; j < bitmap[0].length; j++) {
+    for (int i = 0; i < bitmap[0].length; i++) {
+      for (int j = 0; j < bitmap.length; j++) {
         System.out.print("\t" + bitmap[i][j]);
       }
       System.out.println("");
@@ -83,8 +83,8 @@ public class Helper {
   }
 
   public static void printCharMap(char[][] bitmap) {
-    for (int i = 0; i < bitmap.length; i++) {
-      for (int j = 0; j < bitmap[0].length; j++) {
+    for (int i = 0; i < bitmap[0].length; i++) {
+      for (int j = 0; j < bitmap.length; j++) {
         System.out.print(bitmap[i][j]);
       }
       System.out.println("");
