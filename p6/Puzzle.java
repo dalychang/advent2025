@@ -59,7 +59,7 @@ public class Puzzle {
       answer += total;
     }
 
-    System.out.println("answer is " + answer);     
+    System.out.println("answer is " + answer);
     
     System.out.println("time taken " + (clock.millis() - startTime) + "ms");
   }

@@ -38,8 +38,8 @@ public class Helper {
 
   public static char[][] readCharGrid(List<String> lines) {
     char[][] grid = new char[lines.get(0).length()][lines.size()];
-    for (int x = 0; x < lines.size(); x++) {
-      for (int y = 0; y < lines.get(x).length(); y++) {
+    for (int y = 0; y < lines.size(); y++) {
+      for (int x = 0; x < lines.get(y).length(); x++) {
         grid[x][y] = lines.get(y).charAt(x);
       }
     }
