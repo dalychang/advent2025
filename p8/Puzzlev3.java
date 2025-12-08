@@ -41,19 +41,6 @@ public class Puzzlev3 {
 
     return target;
   }
-
-  public static void merge(Map<Position, Set<Position>> groupings, Position p1, Position p2) {
-    Set<Position> s1 = groupings.get(p1);
-    Set<Position> s2 = groupings.get(p2);
-
-    if (s1 == s2) return;
-    Set<Position> sm = new HashSet<>();
-    sm.addAll(s1);
-    sm.addAll(s2);
-    for (Position p : sm) {
-      groupings.put(p, sm);
-    }
-  }
     
   public static void main(String[] args) throws Exception {
     final List<String> lines = Helper.loadFile("dev_advent/p8/input.txt");
@@ -67,31 +54,15 @@ public class Puzzlev3 {
       positions.add(new Position(Integer.parseInt(s[0]), Integer.parseInt(s[1]), Integer.parseInt(s[2])));
     }
 
-    Set<Position> positionsPending = new HashSet<>();
-    positionsPending.addAll(positions);
-
     double biggestDistance = 0;
     List<Position> last = null;
-    while (!positionsPending.isEmpty()) {
-      double least = Double.MAX_VALUE;
-      Position np = null;
-      Position target = null;
-      for (Position p : positionsPending) {
-        Position cp = findMin(positions, p);
-        double distance = findDistance(cp, p);
-        if (least > distance) {
-          least = distance;
-          np = p;
-          target = cp;
-        }
-      }
-
-      positionsPending.remove(np);
-      positionsPending.remove(target);
+    for (Position p : positions) {
+      Position target = findMin(positions, p);
+      double distance = findDistance(target, p);
       
-      if (biggestDistance < least) {
-        biggestDistance = least;
-        last = List.of(np, target);
+      if (biggestDistance < distance) {
+        biggestDistance = distance;
+        last = List.of(p, target);
       }
     }
     
