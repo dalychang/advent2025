@@ -111,7 +111,6 @@ public class Puzzle {
       }
     }
 
-    System.out.println("groups");
     Set<Set<Position>> setofSets = new HashSet();
     for (Set<Position> s : groupings.values()) {
       setofSets.add(s);
